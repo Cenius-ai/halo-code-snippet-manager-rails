@@ -1,0 +1,91 @@
+<% content_for :title, "#{@snippet.title_display} — Halo" %>
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-6">
+    <%= link_to root_path, class: "inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors no-underline" do %>
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+      </svg>
+      Back to home
+    <% end %>
+  </div>
+
+  <!-- Snippet header -->
+  <div class="border border-border bg-card rounded-t-lg p-5">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="min-w-0">
+        <h1 class="font-heading text-xl font-bold text-primary tracking-tight break-words">
+          <%= @snippet.title_display %>
+        </h1>
+        <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-muted-foreground">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-border bg-muted">
+            <span class="w-2 h-2 rounded-full" style="background-color: <%= language_color(@snippet.language) %>"></span>
+            <%= @snippet.language_display.capitalize %>
+          </span>
+          <span><%= @snippet.created_at.strftime("%b %d, %Y at %H:%M") %></span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <%= link_to raw_snippet_path(@snippet), class: "inline-flex items-center gap-1.5 px-3 py-1.5 border border-border text-muted-foreground rounded text-xs font-medium hover:text-foreground hover:bg-muted transition-colors no-underline", target: "_blank" do %>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          Raw
+        <% end %>
+
+        <button
+          data-controller="copy"
+          data-action="click->copy#copy"
+          data-copy-text="<%= j @snippet.content %>"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border text-muted-foreground rounded text-xs font-medium hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-ring"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+          </svg>
+          Copy code
+          <span data-copy-target="feedback" class="hidden text-accent font-semibold">Copied!</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shareable link -->
+  <div class="border-l border-r border-border bg-card px-5 py-3 flex items-center gap-3 border-b border-border/50">
+    <span class="text-xs text-muted-foreground font-medium shrink-0">Share link:</span>
+    <code class="flex-1 text-xs font-mono text-foreground bg-muted rounded px-3 py-1.5 truncate select-all"><%= snippet_url(@snippet) %></code>
+    <button
+      data-controller="copy"
+      data-action="click->copy#copy"
+      data-copy-text="<%= j snippet_url(@snippet) %>"
+      class="inline-flex items-center gap-1 px-2.5 py-1 border border-border text-muted-foreground rounded text-xs font-medium hover:text-foreground hover:bg-muted transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-ring"
+    >
+      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+      </svg>
+      <span data-copy-target="feedback" class="hidden text-accent font-semibold">Copied!</span>
+    </button>
+  </div>
+
+  <!-- Code block -->
+  <div class="border-l border-r border-b border-border bg-card rounded-b-lg overflow-hidden">
+    <div class="overflow-x-auto">
+      <div class="min-w-full inline-block">
+        <%= render_code(@snippet.content, @snippet.language) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom actions -->
+  <div class="mt-6 flex items-center justify-between text-sm">
+    <span class="text-muted-foreground">
+      Created <%= time_ago_in_words(@snippet.created_at) %> ago
+    </span>
+    <%= link_to new_snippet_path, class: "inline-flex items-center gap-1.5 text-accent hover:text-primary transition-colors no-underline font-medium" do %>
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      Create another
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<% content_for :title, "Halo — Recent Snippets" %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+    <div>
+      <h1 class="font-heading text-3xl font-bold text-primary tracking-tight">Recent snippets</h1>
+      <p class="text-muted-foreground mt-1">The latest code shared by developers.</p>
+    </div>
+    <%= link_to new_snippet_path, class: "inline-flex items-center gap-2 px-4 py-2 border border-primary text-primary rounded font-medium text-sm hover:bg-primary hover:text-on-primary transition-colors focus-visible:outline-2 focus-visible:outline-ring" do %>
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      New snippet
+    <% end %>
+  </div>
+
+  <% if @snippets.any? %>
+    <div class="grid gap-4">
+      <% @snippets.each do |snippet| %>
+        <%= link_to snippet_path(snippet), class: "block group border border-border bg-card rounded p-5 hover:border-accent/40 transition-colors no-underline" do %>
+          <div class="flex items-start justify-between gap-4">
+            <div class="min-w-0 flex-1">
+              <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                <%= snippet.title_display %>
+              </h3>
+              <div class="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full" style="background-color: <%= language_color(snippet.language) %>"></span>
+                  <%= snippet.language_display.capitalize %>
+                </span>
+                <span>&middot;</span>
+                <span><%= time_ago_in_words(snippet.created_at) %> ago</span>
+              </div>
+            </div>
+            <div class="shrink-0 text-muted-foreground group-hover:text-accent transition-colors">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </div>
+          </div>
+          <div class="mt-3">
+            <pre class="text-xs text-muted-foreground font-mono bg-muted rounded p-3 overflow-x-auto max-h-24 line-clamp-4"><%= truncate(snippet.content, length: 200) %></pre>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-16 border border-border border-dashed rounded-lg bg-card">
+      <div class="text-6xl mb-4 text-muted-foreground/30 leading-none font-serif">&ldquo;</div>
+      <p class="text-muted-foreground text-lg mb-6">No snippets yet. Be the first to share some code.</p>
+      <%= link_to "Create your first snippet", new_snippet_path, class: "inline-flex items-center gap-2 px-5 py-2.5 border border-primary text-primary rounded font-medium text-sm hover:bg-primary hover:text-on-primary transition-colors focus-visible:outline-2 focus-visible:outline-ring" %>
+    </div>
+  <% end %>
+</div>

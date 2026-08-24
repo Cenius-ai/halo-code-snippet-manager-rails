@@ -1,0 +1,16 @@
+/* Dark mode overrides for the Paper & Ink theme */
+.dark {
+  --color-card: #1c1611;
+  --color-muted: #261f19;
+  --color-border: #3a322c;
+  --color-primary: #dcc8b8;
+  --color-background: #14100c;
+  --color-foreground: #dcc8b8;
+  --color-on-primary: #14100c;
+  --color-secondary: #261f19;
+  --color-card-foreground: #dcc8b8;
+  --color-muted-foreground: #8b8076;
+  --color-accent: #e09070;
+  --color-ring: #e09070;
+  --color-on-secondary: #dcc8b8;
+}

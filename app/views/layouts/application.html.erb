@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Halo — Code Snippet Manager" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="A developer's pastebin for sharing code snippets with syntax highlighting.">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-background text-foreground font-body min-h-screen flex flex-col">
+    <header class="border-b border-border bg-card">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-14">
+          <div class="flex items-center gap-6">
+            <%= link_to root_path, class: "flex items-center gap-2 no-underline" do %>
+              <span class="font-heading text-xl font-bold text-primary tracking-tight">Halo</span>
+            <% end %>
+            <nav class="hidden sm:flex items-center gap-1">
+              <%= link_to "Home", root_path, class: "px-3 py-1.5 text-sm rounded text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" %>
+              <%= link_to "New Snippet", new_snippet_path, class: "px-3 py-1.5 text-sm rounded text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" %>
+            </nav>
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              data-controller="theme"
+              data-action="click->theme#toggle"
+              aria-label="Toggle dark mode"
+              class="p-2 rounded text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-ring"
+            >
+              <svg data-theme-target="lightIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+              <svg data-theme-target="darkIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav class="sm:hidden flex items-center gap-1 pb-2">
+          <%= link_to "Home", root_path, class: "px-2 py-1 text-xs rounded text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" %>
+          <%= link_to "+ New", new_snippet_path, class: "px-2 py-1 text-xs rounded text-muted-foreground hover:text-foreground hover:bg-muted transition-colors font-medium" %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <% if notice %>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <div class="bg-muted text-foreground border border-border rounded px-4 py-3 text-sm flex items-center justify-between">
+            <span><%= notice %></span>
+            <button onclick="this.parentElement.remove()" class="text-muted-foreground hover:text-foreground ml-4">&times;</button>
+          </div>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="border-t border-border bg-card mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p>Halo &mdash; share code, beautifully.</p>
+          <p>Syntax highlighting by <a href="https://github.com/rouge-ruby/rouge" class="text-accent underline decoration-1 underline-offset-2 hover:text-primary transition-colors" target="_blank" rel="noopener">Rouge</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

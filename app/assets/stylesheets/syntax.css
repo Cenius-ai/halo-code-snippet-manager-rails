@@ -1,0 +1,138 @@
+/* Syntax highlighting with Rouge */
+/* Line-numbered code blocks */
+
+.highlight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.highlight-table td.line-number {
+  width: 1%;
+  min-width: 3rem;
+  padding: 0 0.75rem;
+  text-align: right;
+  color: var(--color-muted-foreground);
+  background: var(--color-muted);
+  border-right: 1px solid var(--color-border);
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+}
+
+.highlight-table td.line-code {
+  padding: 0 1rem;
+  vertical-align: top;
+}
+
+.highlight-table td.line-code pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Rouge token colors — warm, low-contrast theme matching Paper & Ink */
+.highlight-table .k  { color: #9b6b3d; font-weight: 600; } /* keyword */
+.highlight-table .kd { color: #9b6b3d; font-weight: 600; } /* keyword declaration */
+.highlight-table .kn { color: #9b6b3d; font-weight: 600; } /* keyword namespace */
+.highlight-table .kp { color: #9b6b3d; }                   /* keyword pseudo */
+.highlight-table .kr { color: #9b6b3d; }                   /* keyword reserved */
+.highlight-table .kt { color: #c66846; }                   /* keyword type */
+.highlight-table .nc { color: #c66846; font-weight: 600; } /* class name */
+.highlight-table .nf { color: #5c7a4a; }                   /* function name */
+.highlight-table .s  { color: #5c7a4a; }                   /* string */
+.highlight-table .s1 { color: #5c7a4a; }                   /* single-quoted string */
+.highlight-table .s2 { color: #5c7a4a; }                   /* double-quoted string */
+.highlight-table .sb { color: #5c7a4a; }                   /* string backtick */
+.highlight-table .sc { color: #5c7a4a; }                   /* string char */
+.highlight-table .sd { color: #8b7355; }                   /* string doc */
+.highlight-table .se { color: #c66846; }                   /* string escape */
+.highlight-table .sh { color: #5c7a4a; }                   /* string heredoc */
+.highlight-table .si { color: #c66846; }                   /* string interpol */
+.highlight-table .sr { color: #5c7a4a; }                   /* string regex */
+.highlight-table .c  { color: #8b7355; font-style: italic; } /* comment */
+.highlight-table .cm { color: #8b7355; font-style: italic; } /* comment multi */
+.highlight-table .cp { color: #8b7355; }                    /* comment preproc */
+.highlight-table .c1 { color: #8b7355; font-style: italic; } /* comment single */
+.highlight-table .cs { color: #8b7355; font-style: italic; } /* comment special */
+.highlight-table .m  { color: #7b4f32; }                   /* number */
+.highlight-table .mi { color: #7b4f32; }                   /* number integer */
+.highlight-table .mf { color: #7b4f32; }                   /* number float */
+.highlight-table .o  { color: #555555; }                   /* operator */
+.highlight-table .ow { color: #9b6b3d; font-weight: 600; } /* operator word */
+.highlight-table .p  { color: #6f6056; }                   /* punctuation */
+.highlight-table .nb { color: #7b4f32; }                   /* name builtin */
+.highlight-table .nv { color: #2c1a0e; }                   /* variable */
+.highlight-table .vc { color: #2c1a0e; }                   /* variable class */
+.highlight-table .vg { color: #2c1a0e; }                   /* variable global */
+.highlight-table .vi { color: #2c1a0e; }                   /* variable instance */
+.highlight-table .na { color: #7b4f32; }                   /* name attribute */
+.highlight-table .nt { color: #c66846; }                   /* name tag */
+.highlight-table .nn { color: #2c1a0e; font-weight: 600; } /* namespace */
+.highlight-table .no { color: #7b4f32; }                   /* constant */
+.highlight-table .nd { color: #2c1a0e; }                   /* decorator */
+.highlight-table .ni { color: #2c1a0e; }                   /* entity */
+.highlight-table .ne { color: #c9302d; }                   /* error */
+.highlight-table .err { color: #c9302d; }                  /* error */
+.highlight-table .ss { color: #5c7a4a; }                   /* symbol */
+.highlight-table .w  { color: #1b1008; }                   /* whitespace */
+
+/* Dark mode overrides */
+.dark .highlight-table td.line-number {
+  color: #8b8076;
+  background: #1e1814;
+  border-right-color: #3a322c;
+}
+
+.dark .highlight-table .k,
+.dark .highlight-table .kd,
+.dark .highlight-table .kn,
+.dark .highlight-table .kr,
+.dark .highlight-table .ow { color: #d4a86c; }
+
+.dark .highlight-table .kt,
+.dark .highlight-table .nc,
+.dark .highlight-table .nt,
+.dark .highlight-table .se,
+.dark .highlight-table .si { color: #e09070; }
+
+.dark .highlight-table .s,
+.dark .highlight-table .s1,
+.dark .highlight-table .s2,
+.dark .highlight-table .sb,
+.dark .highlight-table .sc,
+.dark .highlight-table .sh,
+.dark .highlight-table .sr,
+.dark .highlight-table .ss,
+.dark .highlight-table .nf { color: #8cb880; }
+
+.dark .highlight-table .c,
+.dark .highlight-table .cm,
+.dark .highlight-table .c1,
+.dark .highlight-table .cs,
+.dark .highlight-table .cp,
+.dark .highlight-table .sd { color: #7a7068; }
+
+.dark .highlight-table .m,
+.dark .highlight-table .mi,
+.dark .highlight-table .mf,
+.dark .highlight-table .nb,
+.dark .highlight-table .na,
+.dark .highlight-table .no { color: #c49a6c; }
+
+.dark .highlight-table .o { color: #8b8076; }
+.dark .highlight-table .p { color: #8b8076; }
+.dark .highlight-table .nv,
+.dark .highlight-table .vc,
+.dark .highlight-table .vg,
+.dark .highlight-table .vi,
+.dark .highlight-table .nn,
+.dark .highlight-table .nd,
+.dark .highlight-table .ni { color: #dcc8b8; }
+
+.dark .highlight-table .ne,
+.dark .highlight-table .err { color: #e06050; }
+
+.dark .highlight-table .w { color: #dcc8b8; }

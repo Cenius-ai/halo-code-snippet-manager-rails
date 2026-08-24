@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-heading: "Comfortaa", sans-serif;
+  --font-body: "Karla", sans-serif;
+
+  --color-card: #fffefb;
+  --color-ring: #c66846;
+  --color-muted: #f4ebe5;
+  --color-accent: #c66846;
+  --color-border: #e5dcd7;
+  --color-primary: #2c1a0e;
+  --color-on-accent: #111111;
+  --color-secondary: #f4ebe5;
+  --color-background: #fff8f3;
+  --color-foreground: #1b1008;
+  --color-on-primary: #ffffff;
+  --color-destructive: #c9302d;
+  --color-on-secondary: #1b1008;
+  --color-on-destructive: #ffffff;
+  --color-card-foreground: #1b1008;
+  --color-muted-foreground: #6f6056;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
