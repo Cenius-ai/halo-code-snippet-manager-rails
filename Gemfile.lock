@@ -216,7 +216,8 @@ GEM
     regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
-    rouge (4.7.0)
+    rouge (5.1.0)
+      strscan (~> 3.1)
     rubocop (1.88.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -265,6 +266,7 @@ GEM
     sqlite3 (2.9.5-x86_64-linux-musl)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
+    strscan (3.1.8)
     tailwindcss-rails (4.6.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -316,7 +318,7 @@ DEPENDENCIES
   importmap-rails
   puma (>= 5.0)
   rails (~> 7.2.3, >= 7.2.3.1)
-  rouge (~> 4.3)
+  rouge (~> 5.1)
   rubocop-rails-omakase
   sprockets-rails
   sqlite3 (>= 1.4)
@@ -405,7 +407,7 @@ CHECKSUMS
   rdoc (8.0.0) sha256=03bf8c08a9639658855a0cfd77c0abca8325c227693f7f33f82957811348c469
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
-  rouge (4.7.0) sha256=dba5896715c0325c362e895460a6d350803dbf6427454f49a47500f3193ea739
+  rouge (5.1.0) sha256=b77c632842ab7f5147940212f0345808cccfbce864fd5b631d7d12a35ac85452
   rubocop (1.88.2) sha256=8def251c90cd955feb4daa3edc0ab56893250c4ce90ef81e6c80c03f9a939bbf
   rubocop-ast (1.50.0) sha256=b9ca88300da0803ee222ad20cdb30494c0a784eed06fdc35d254b06d662788db
   rubocop-performance (1.26.1) sha256=cd19b936ff196df85829d264b522fd4f98b6c89ad271fa52744a8c11b8f71834
@@ -424,6 +426,7 @@ CHECKSUMS
   sqlite3 (2.9.5-x86_64-linux-gnu) sha256=233dbcb6714148dd23bc5aeb33e8efd6eac974969564ddd5794c23d5f52b231e
   sqlite3 (2.9.5-x86_64-linux-musl) sha256=e7d3a7474e8af0f96150c21abc203fbab5437206bfcdf11deab7741c0ca516f2
   stimulus-rails (1.3.4) sha256=765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06
+  strscan (3.1.8) sha256=aae2db611a225559f21ffbb71765c9a4e60fd262534a9ea84f4f11c7f32f679e
   tailwindcss-rails (4.6.0) sha256=d99512867173d55c5ef8890427682299d8539f550cec1408b3d8667a538bd365
   tailwindcss-ruby (4.3.2) sha256=e7e583c13f13f645e353922de4a5295f724449576747911d3717f36c4c8a0c45
   tailwindcss-ruby (4.3.2-aarch64-linux-gnu) sha256=c045c3ad10b19f5798fbe020e8419abc0c84fbbd12766998bd8cb108c786dc5c
