@@ -8,7 +8,7 @@ gem "importmap-rails"
 gem "tailwindcss-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
-gem "rouge", "~> 4.3"
+gem "rouge", "~> 5.1"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
