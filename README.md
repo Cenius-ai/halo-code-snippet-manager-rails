@@ -77,7 +77,7 @@ _Full guide: [`USAGE.md`](USAGE.md)_
 
 ## Architecture
 
-Everything runs out of the box: a Ruby on Rails codebase (2,238 files). `install.sh` provisions dependencies and seeds demo data so the app starts with something real to explore. Top-level layout: `app/`, `bin/`, `config/`, `db/`, `lib/`, `log/`, `public/`, `storage/`. Full setup details: [`INSTALL.md`](INSTALL.md).
+Everything runs out of the box: a Ruby on Rails codebase (2,225 files). `install.sh` provisions dependencies and seeds demo data so the app starts with something real to explore. Top-level layout: `app/`, `bin/`, `config/`, `db/`, `lib/`, `log/`, `public/`, `storage/`. Full setup details: [`INSTALL.md`](INSTALL.md).
 
 ## FAQ
 
